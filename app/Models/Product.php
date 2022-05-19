@@ -19,7 +19,11 @@ class Product extends Model
         'description',
         'price',
         'image',
-        'user_id'
+        'code',
+        'reference',
+        'stock_balance',
+        'user_id',
+        'categories_id'
     ];
 
     /**
@@ -32,6 +36,18 @@ class Product extends Model
     public function user(): object
     {
         return $this->belongsTo(User::class)->select('id', 'name', 'email');
+    }
+
+    /**
+     * Categories
+     *
+     * Get Categories Uploaded By Product
+     *
+     * @return object
+     */
+    public function categories(): object
+    {
+        return $this->belongsTo(Categories::class)->select('id', 'description', 'active');
     }
 
     // Add New Attribute to get image address

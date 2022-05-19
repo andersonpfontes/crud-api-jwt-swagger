@@ -4,18 +4,52 @@ namespace App\Http\Controllers\Categories;
 
 use App\Models\Categories;
 use Illuminate\Http\Request;
+use App\Traits\ResponseTrait;
 use App\Http\Controllers\Controller;
+use App\Repositories\CategoriesRepository;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Response;
+
 
 class CategoriesController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     /**
+     * Response trait to handle return responses.
      */
-    public function index()
+    use ResponseTrait;
+
+    /**
+     * Categories Repository class.
+     *
+     * @var CategoriesRepository
+     */
+    public $categoriesRepository;
+
+    public function __construct(CategoriesRepository $categoriesRepository)
     {
-        //
+        $this->middleware('auth:api', ['except' => ['indexAll']]);
+        $this->categoriesRepository = $categoriesRepository;
+    }
+
+
+    public function index(): JsonResponse
+    {
+        try {
+            $data = $this->categoriesRepository->getAll();
+            return $this->responseSuccess($data, 'Categories List Fetch Successfully !');
+        } catch (\Exception $e) {
+            return $this->responseError(null, $e->getMessage(), Response::HTTP_INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    public function search(Request $request): JsonResponse
+    {
+        try {
+            $data = $this->categoriesRepository->searchCategories($request->search, $request->perPage);
+            return $this->responseSuccess($data, 'Categories List Fetched Successfully !');
+        } catch (\Exception $e) {
+            return $this->responseError(null, $e->getMessage(), Response::HTTP_INTERNAL_SERVER_ERROR);
+        }
     }
 
     /**

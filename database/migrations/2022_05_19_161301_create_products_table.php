@@ -19,9 +19,17 @@ class CreateProductsTable extends Migration
             $table->text('description')->nullable();
             $table->float('price')->default(0);
             $table->string('image')->nullable();
+            $table->integer('code')->nullable();
+            $table->string('reference')->nullable();
+            $table->integer('stock_balance')->nullable();
             $table->unsignedBigInteger('user_id')->comment('Created By User');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->unsignedBigInteger('categories_id');
             $table->timestamps();
+        });
+
+        Schema::table('products', function($table) {
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('categories_id')->references('id')->on('categories');
         });
     }
 

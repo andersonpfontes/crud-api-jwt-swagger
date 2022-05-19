@@ -23,7 +23,11 @@ class ProductSeeder extends Seeder
                 'price' => 2000,
                 'description' => 'Product 1 Description',
                 'image' => null,
+                'code' => 111,
+                'reference' => 'ref-110',
+                'stock_balance' => 600,
                 'user_id' => 1,
+                'categories_id' => 1,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
@@ -32,7 +36,11 @@ class ProductSeeder extends Seeder
                 'price' => 5000,
                 'description' => 'Product 2 Description',
                 'image' => null,
+                'code' => 111,
+                'reference' => 'ref-110',
+                'stock_balance' => 300,
                 'user_id' => 1,
+                'categories_id' => 2,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
@@ -41,7 +49,11 @@ class ProductSeeder extends Seeder
                 'price' => 77000,
                 'description' => 'Product 3 Description',
                 'image' => null,
+                'code' => 111,
+                'reference' => 'ref-110',
+                'stock_balance' => 200,
                 'user_id' => 1,
+                'categories_id' => 1,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ]

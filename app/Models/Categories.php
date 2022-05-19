@@ -18,4 +18,16 @@ class Categories extends Model
         'description',
         'active'
     ];
+
+    /**
+     * Products
+     *
+     * Get All products uploaded by categories
+     *
+     * @return object Eloquent product object
+     */
+    public function products()
+    {
+        return $this->hasMany(Product::class)->orderBy('id', 'desc');
+    }
 }

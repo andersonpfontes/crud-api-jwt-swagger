@@ -27,6 +27,10 @@ class ProductFactory extends Factory
             'description' => $this->faker->text,
             'user_id' => 1,
             'image' => null,
+            'code' => 1111,
+            'reference' => $this->faker->text,
+            'stock_balance' => 600,
+            'categories_id' => 1,
         ];
     }
 }
