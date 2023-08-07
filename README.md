@@ -30,7 +30,7 @@
 1. Clone Project - 
 
 ```bash
-git clone https://github.com/andersonpfontes/test-php-portugal.git
+git clone https://github.com/andersonpfontes/crud-api-jwt-swagger.git
 ```
 1. execute composer install --ignore-platform-reqs
 2. Create `.env` file & Copy `.env.example` file to `.env` file
